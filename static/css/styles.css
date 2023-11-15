@@ -1,0 +1,41 @@
+#login,
+#loggedin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.date {
+    margin: 0vh;
+}
+
+.tracks {
+    margin: 5px 0vh;
+}
+
+#sitrep {
+    clear: both;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: 25px auto;
+}
+
+
+
+
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 500px;
+}
+
+/* table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+} */

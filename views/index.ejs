@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SITREP Spotify</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div id="login">
+            <h1>SITREP</h1>
+            <h2>Spotify Situation Reporter</h2>
+            <a href="/login" class="login-btn">Log in with Spotify</a>
+            <p class="info">
+                Made by
+                <a href="" target="_blank"> Aden Sattler</a>.
+            </p>
+
+        </div>
+
+        <div id="loggedin">
+            <h1>SITREP</h1>
+            <h2>Spotify Situation Reporter</h2>
+            <div id="options">
+                <button class="time-btn" id="short_term">Last Month</button>
+                <button class="time-btn" id="medium_term">Last 6 Months</button>
+                <button class="time-btn" id="long_term">All Time</button>
+            </div>
+            <div id="sitrep"></div>
+        </div>
+    </div>
+
+    <script id="user-profile-template" type="text/x-handlebars-template">
+        <div class='sitrepContainer'>
+            <h2 class='logo'>
+                SITREP
+            </h2>
+            <p class='period'>
+                {{period}}
+            </p>
+            <p class='date'>
+                ORDER #000{{num}} FOR {{name}}
+            </p>
+            <p class='date'>
+                {{time}}
+            </p>
+            <table class='tracks'>
+                <thead>
+                    <td class='begin'>
+                        RNK
+                    </td>
+                    <td>
+                        ITEM
+                    </td>
+                    <!-- <td class='length'>
+                        AMT
+                    </td> -->
+                </thead>
+                {{#each tracks}}
+                    <tr>
+                        <td class='begin'>
+                            {{this.id}}
+                        </td>
+                        <td class='name'>
+                            {{this.name}}
+                            {{#each this.artists}}
+                                <span>
+                                    {{this.name}}
+                                </span>
+                            {{/each}}
+                        </td>
+                        <!-- <td class='length'>
+                            {{this.duration_ms}}
+                        </td> -->
+                    </tr>
+                {{/each}}
+                <tr class='total-counts'>
+                    <td class='begin' colspan='2'>
+                        ITEM COUNT:
+                    </td>
+                    <td class='length'>
+                        10
+                    </td>
+                </tr>
+                <tr class='total-counts-end'>
+                    <td class='begin' colspan='2'>
+                        TOTAL:
+                    </td>
+                    <td class='length'>
+                        {{total}}
+                    </td>
+                </tr>
+            </table>
+            <!-- <p>
+                CARD #: **** **** **** 2021
+            </p> -->
+            <p class='date'>
+                AUTH CODE: 123421
+            </p>
+            <p class='date'>
+                SUBJECT: {{name}}
+            </p>
+            <div class='thanks'>
+                <p>
+                    THANK YOU FOR VISITING!
+                </p>
+            </div>
+        </div>
+    </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="/js/server.js"></script>
+</body>
+
+</html>
