@@ -4,8 +4,8 @@ const app = express();
 const PORT = 3000;
 const querystring = require("querystring");
 
-const client_id = ""; // Your client id
-const client_secret = ""; // Your secret
+const client_id = JSON.parse(credentials).client_id; // Your client id
+const client_secret = JSON.parse(credentials).client_secret; // Your secret
 const redirect_uri = "http://localhost:3000/callback"; // Your redirect uri
 
 // Set the view engine to EJS
