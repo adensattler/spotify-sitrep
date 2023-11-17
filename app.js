@@ -2,8 +2,6 @@ const express = require('express');
 const request = require("request");
 const fs = require('fs');
 
-
-
 const app = express();
 const PORT = 3000;
 const querystring = require("querystring");
@@ -11,7 +9,7 @@ const querystring = require("querystring");
 const credentials = fs.readFileSync('./credentials.json', 'utf-8');
 const client_id = JSON.parse(credentials).client_id; // Your client id
 const client_secret = JSON.parse(credentials).client_secret; // Your secret
-const redirect_uri = "http://localhost:3000/callback"; // Your redirect uri
+const redirect_uri = "http://13.86.16.169/callback"; // Your redirect uri
 
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
