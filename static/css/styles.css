@@ -9,9 +9,6 @@
     margin: 0vh;
 }
 
-.tracks {
-    margin: 5px 0vh;
-}
 
 #sitrep {
     clear: both;
@@ -21,6 +18,11 @@
     align-content: center;
     justify-content: center;
     margin: 25px auto;
+}
+
+.contentContainer {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 
@@ -39,3 +41,6 @@ td {
     border: 1px solid black;
     border-collapse: collapse;
 } */
+td {
+    padding-right: 5px;
+}

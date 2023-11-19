@@ -39,70 +39,75 @@
                 SITREP
             </h2>
             <p class='period'>
-                {{period}}
+                DOCUMENT #00{{num}} ON SUBJECT {{name}}
             </p>
-            <p class='date'>
-                ORDER #000{{num}} FOR {{name}}
+            <p class='period'>
+                INCIDENT NUMBER: 98765413
             </p>
-            <p class='date'>
+            <p class='period'>
+                CURRENT DTG: 
                 {{time}}
             </p>
-            <table class='tracks'>
-                <thead>
-                    <td class='begin'>
-                        RNK
-                    </td>
-                    <td>
-                        ITEM
-                    </td>
-                    <!-- <td class='length'>
-                        AMT
-                    </td> -->
-                </thead>
-                {{#each tracks}}
-                    <tr>
+            <p class='period'>
+                SIZE AND SCOPE: {{period}}
+            </p>
+
+            <div id="trackListContainer" class="contentContainer">
+                <h4 class='date'>
+                    TOP TRACKS
+                </h4>
+                <table class='tracks'>
+                    <thead>
                         <td class='begin'>
-                            {{this.id}}
+                            RNK
                         </td>
-                        <td class='name'>
-                            {{this.name}}
-                            {{#each this.artists}}
-                                <span>
-                                    {{this.name}}
-                                </span>
-                            {{/each}}
+                        <td>
+                            ITEM
                         </td>
-                        <!-- <td class='length'>
-                            {{this.duration_ms}}
-                        </td> -->
-                    </tr>
-                {{/each}}
-                <tr class='total-counts'>
-                    <td class='begin' colspan='2'>
-                        ITEM COUNT:
-                    </td>
-                    <td class='length'>
-                        10
-                    </td>
-                </tr>
-                <tr class='total-counts-end'>
-                    <td class='begin' colspan='2'>
-                        TOTAL:
-                    </td>
-                    <td class='length'>
-                        {{total}}
-                    </td>
-                </tr>
-            </table>
-            <!-- <p>
-                CARD #: **** **** **** 2021
-            </p> -->
-            <p class='date'>
-                AUTH CODE: 123421
-            </p>
-            <p class='date'>
-                SUBJECT: {{name}}
-            </p>
+                    </thead>
+                    {{#each tracks}}
+                        <tr>
+                            <td class='begin'>
+                                {{this.id}}
+                            </td>
+                            <td class='name'>
+                                {{this.name}}
+                                {{#each this.artists}}
+                                    <span>
+                                        {{this.name}}
+                                    </span>
+                                {{/each}}
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+    
+            <div id="artistListContainer" class="contentContainer">
+                <h4 class='date'>
+                    TOP ARTISTS
+                </h4>
+                <table class='artists'>
+                    <thead>
+                        <td class='begin'>
+                            RNK
+                        </td>
+                        <td>
+                            ARTIST
+                        </td>
+                    </thead>
+                    {{#each artists}}
+                        <tr>
+                            <td class='begin'>
+                                {{this.id}}
+                            </td>
+                            <td class='name'>
+                                {{this.name}}
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
             <div class='thanks'>
                 <p>
                     THANK YOU FOR VISITING!
@@ -115,5 +120,4 @@
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="/js/server.js"></script>
 </body>
-
 </html>
