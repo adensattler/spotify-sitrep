@@ -115,7 +115,7 @@ app.get("/callback", function (req, res) {
 
 
 
-// refresh token code is from the spoitfy website
+// refresh token code is from the spotify website
 // app.get('/refresh_token', function (req, res) {
 //     var refresh_token = req.query.refresh_token;
 //     var authOptions = {

@@ -185,7 +185,6 @@
                     }
                 }
 
-
                 // userProfilePlaceholder.innerHTML = userProfileTemplate({
                 // Update the template with the values for the tracks and misc
                 let tracksListHTML = userProfileTemplate({
@@ -222,7 +221,6 @@
                     data.artistList[i].name = data.artistList[i].name.toUpperCase(); // Reformat the artist name!
                     data.artistList[i].id = (i + 1 < 10 ? "0" : "") + (i + 1); // Each artist holds its rank to display
                 }
-
 
                 // Update the template with the values for the artists
                 let artistListHTML = userProfileTemplate({
