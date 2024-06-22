@@ -1,20 +1,23 @@
-const express = require('express');
+const express = require('express'); // Express web server framework
 const request = require("request");
-const fs = require('fs');
+const cors = require('cors');
 
 const app = express();
 const PORT = 3000;
 const querystring = require("querystring");
 
-const credentials = fs.readFileSync('./credentials.json', 'utf-8');
-const client_id = JSON.parse(credentials).client_id; // Your client id
-const client_secret = JSON.parse(credentials).client_secret; // Your secret
-const redirect_uri = JSON.parse(credentials).redirect_uri; // Your redirect uri
+// pulling in env vars
+require('dotenv').config();
+const client_id = process.env.client_id;// Your spotify dev client id
+const client_secret = process.env.client_secret; // Your dev secret
+var redirect_uri = process.env.redirect_uri || 'http://localhost:3000/callback'; // Your redirect uri
 
-// Set the view engine to EJS
-app.set('view engine', 'ejs');
-// Serve static files from the 'public' directory
-app.use(express.static('static'));
+
+app
+    .set('view engine', 'ejs')  // Set the view engine to EJS
+    .use(cors())
+    .use(express.static('static')); // Serve static files from the 'static' directory
+    
 
 /**
  * Generates a random string containing numbers and letters

@@ -4,11 +4,48 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SITREP Spotify</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Bootstrap's JavaScript file -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="/css/styles.css" />
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Privacy Policy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Contact</a>
+                    </li>
+                    <!-- <li class="nav-item" id="logout-btn">
+                <button class="nav-link active time-btn" id="logout">Log Out</button>
+              </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <div id="login">
             <h1>SITREP</h1>
@@ -16,7 +53,7 @@
             <a href="/login" class="login-btn">Log in with Spotify</a>
             <p class="info">
                 Made by
-                <a href="" target="_blank"> Aden Sattler</a>.
+                <a href=""> Aden Sattler</a>.
             </p>
 
         </div>
@@ -29,10 +66,13 @@
                 <button class="time-btn" id="medium_term">Last 6 Months</button>
                 <button class="time-btn" id="long_term">All Time</button>
             </div>
+
+            <!-- SITUATION REPORT IS ADDED HERE -->
             <div id="sitrep"></div>
         </div>
     </div>
 
+    <!-- SITREP TEMPLATE -->
     <script id="user-profile-template" type="text/x-handlebars-template">
         <div class='sitrepContainer'>
             <h2 class='logo'>
@@ -116,8 +156,29 @@
         </div>
     </script>
 
+    <!-- ADD A FOOTER HERE -->
+    <div class="footer">
+        <div class="seperator">
+          <hr />
+        </div>
+        
+        <div class="contact">
+            <a href="mailto:adensattler@gmail.com">Email</a>
+            <span>•</span>
+            <a href="https://github.com/adensattler">GitHub</a>
+            <span>•</span>
+            <a href="https://www.linkedin.com/in/aden-sattler">LinkedIn</a>
+        </div>
+        <p class="info">
+            Made by <a href="https://adensattler.me/">Aden Sattler</a>
+          </p>
+
+
+      </div>
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="/js/server.js"></script>
 </body>
+
 </html>

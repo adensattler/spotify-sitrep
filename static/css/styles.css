@@ -1,3 +1,18 @@
+/* :root for CSS Variables */
+:root {
+    --primary-color: #333;
+    --secondary-color: #fff;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --brand-color: #007bff;
+    --padding: 1rem;
+    --margin: 1rem;
+    --border-radius: 5px;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --font-family: Arial, sans-serif;
+    --line-height: 1.6;
+}
+
 #login,
 #loggedin {
     display: flex;
@@ -25,9 +40,6 @@
     padding-bottom: 10px;
 }
 
-
-
-
 .text-overflow {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -35,12 +47,30 @@
     width: 500px;
 }
 
-/* table,
-th,
-td {
-    border: 1px solid black;
-    border-collapse: collapse;
-} */
-td {
-    padding-right: 5px;
+
+
+
+/* Right-align dropdown links in the collapsed navbar */
+.navbar-collapse {
+    text-align: right;
+}
+
+/* Right-align the toggler button */
+.navbar-toggler {
+    margin-left: auto;
+}
+
+
+/* Footer */
+.contact {
+    text-decoration: none;
+    text-align: center;
+}
+.contact a {
+    text-decoration: none;
+    color:black;
+}
+
+.info {
+    text-align: center;
 }
