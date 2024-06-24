@@ -75,23 +75,25 @@
     <!-- SITREP TEMPLATE -->
     <script id="user-profile-template" type="text/x-handlebars-template">
         <div class='sitrepContainer'>
-            <h2 class='logo'>
-                SITREP
-            </h2>
-            <p class='period'>
-                DOCUMENT #00{{num}} ON SUBJECT {{name}}
-            </p>
-            <p class='period'>
-                INCIDENT NUMBER: 98765413
-            </p>
-            <p class='period'>
-                CURRENT DTG: 
-                {{time}}
-            </p>
-            <p class='period'>
-                SIZE AND SCOPE: {{period}}
-            </p>
-
+            <div class="sitrepHeadContainer">
+                <h2 class='logo'>
+                    SITREP
+                </h2>
+                <p class='period'>
+                    DOCUMENT #00{{num}} ON SUBJECT {{name}}
+                </p>
+                <p class='period'>
+                    INCIDENT NUMBER: <span id="incident-number"></span>
+                </p>
+                <p class='period'>
+                    CURRENT DTG: 
+                    {{time}}
+                </p>
+                <p class='period'>
+                    SIZE AND SCOPE: {{period}}
+                </p>    
+            </div>
+            
             <div id="trackListContainer" class="contentContainer">
                 <h4 class='date'>
                     TOP TRACKS
@@ -148,6 +150,9 @@
                     {{/each}}
                 </table>
             </div>
+
+            <!-- Add other blocks here -->
+
             <div class='thanks'>
                 <p>
                     THANK YOU FOR VISITING!

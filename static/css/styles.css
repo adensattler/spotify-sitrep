@@ -61,6 +61,34 @@
 }
 
 
+.sitrepContainer {
+    background-image: url('wrinkled-paper-texture-7.jpg');
+    background-position: center;
+    width: 340px;
+    filter: brightness(105%);
+    padding: 20px;
+    text-transform: uppercase;
+    border: 1px solid
+  }
+
+  thead {
+    border-top: 1px dashed;
+    border-bottom: 1px dashed;
+  }
+  td {
+    padding: 2px 10px;
+    vertical-align: top;
+  }
+.name {
+    width: 225px;
+    overflow: auto;
+  }
+.table {
+    border: 1px
+}
+
+
+
 /* Footer */
 .contact {
     text-decoration: none;

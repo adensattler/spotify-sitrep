@@ -1,6 +1,12 @@
 
-
 var displayName = "SITREP";
+var userProfileSource = document.getElementById(
+    "user-profile-template"
+).innerHTML,
+    userProfileTemplate = Handlebars.compile(userProfileSource),
+    userProfilePlaceholder = document.getElementById("sitrep");
+
+
 var today = new Date(); // get today's data to display later!!
 var dateOptions = {
     weekday: "long",
@@ -9,13 +15,12 @@ var dateOptions = {
     day: "numeric",
 }; // enumerate the date options you want to display so it looks nice!
 
-
-var userProfileSource = document.getElementById(
-    "user-profile-template"
-).innerHTML,
-    userProfileTemplate = Handlebars.compile(userProfileSource),
-    userProfilePlaceholder = document.getElementById("sitrep");
-
+const EVENT_LISTENERS = [
+    'short_term',
+    'medium_term',
+    'long_term',
+    'ten-tracks'
+];
 
 // get and set vars needed for API call
 let params = getHashParams();
@@ -74,6 +79,7 @@ if (error) {
                     // Append or update the HTML content for artists
                     $("#artistListContainer").html(artistListContent);
                 });
+                generateIncidentID();
             });
         },
         false
@@ -240,3 +246,17 @@ function retrieveArtists(timePeriod, callback) {
         },
     });
 }
+
+function generateIncidentID() {
+    // Function to generate a random number within a specified range
+    function generateRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // Generate a random number with 8 digits
+    const randomIncidentNumber = generateRandomNumber(10000000, 99999999);
+
+    // Update the incident number in the HTML
+    const incidentNumberElement = document.getElementById('incident-number');
+    incidentNumberElement.textContent = randomIncidentNumber;
+};
