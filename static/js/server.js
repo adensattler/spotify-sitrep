@@ -1,11 +1,14 @@
 
-var displayName = "SITREP";
-var userProfileSource = document.getElementById(
-    "user-profile-template"
-).innerHTML,
-    userProfileTemplate = Handlebars.compile(userProfileSource),
+// Get the inner HTML content of the element with ID 'user-profile-template'
+var userProfileSource = document.getElementById("user-profile-template").innerHTML,
+    // Compile the HTML content into a Handlebars template function
+    userProfileTemplate = Handlebars.compile(userProfileSource),    
+    
+    // Get the element with the ID 'sitrep' and store it in a variable
+    // This element will be used as a placeholder to insert the rendered template
     userProfilePlaceholder = document.getElementById("sitrep");
 
+ var displayName = "SITREP";
 
 var today = new Date(); // get today's data to display later!!
 var dateOptions = {
@@ -38,10 +41,11 @@ const TIME_RANGE_OPTIONS = {
 
 const SPOTIFY_ROOT_URL = "https://api.spotify.com/v1"
 
+// Get the current selected period (time range)
 const getPeriod = () => {
     return (
-        document.querySelector('input[name="period-select"]:checked')?.value ??
-        'short_term'
+        document.querySelector('input[name="period-select"]:checked')?.value ?? 'short_term'
+        // if no value is check for some reason, default to short_term period
     );
 };
 
@@ -51,8 +55,11 @@ let access_token = params.access_token,
     client = params.client,
     error = params.error;
 
+
+
 // PRIMARY LOGIN DRIVER!!!
-// make a call to the user endpoint to get their name, ensure API functionality, and hide the login screen
+// ---------------------------------------------------------------------------------------------
+// make a call to the user endpoint to get user's name, ensure API functionality, and hide the login screen
 if (error) {
     alert("There was an error during the authentication");
 } else {
@@ -63,7 +70,6 @@ if (error) {
                 Authorization: "Bearer " + access_token,
             },
             success: function (response) {
-                displayName = response.display_name.toUpperCase();
                 $("#login").hide();
                 $("#loggedin").show();
                 processSitrep();    // IMPORTANT: load the default report on successful login!
@@ -88,7 +94,6 @@ if (error) {
 
 // FUNCTIONS
 // ---------------------------------------------------------------------------------------------
-
 /**
 * Obtains parameters from the hash of the URL
 * @return Object
@@ -191,19 +196,19 @@ function retrieveArtists(timePeriod, callback) {
 
 // Generates a sitrep and displays it to the user
 function processSitrep() {
-    const timeRange = getPeriod();
+    const timeRange = getPeriod();      // determine what time range selection the user made
 
+    // RETRIEVE TRACK DATA for the appropriate time range
     retrieveTracks(timeRange, function (trackListContent, trackError) {
         // Handle error if needed
         if (trackError) {
             console.error("Error retrieving tracks:", trackError);
             return;
         }
-
         // Update the HTML content to display the template and tracks info!
         userProfilePlaceholder.innerHTML = trackListContent
 
-        // After tracks are loaded, retrieve artists
+        // After tracks are loaded, RETRIEVE ARTIST DATA
         retrieveArtists(timeRange, function (artistListContent, artistError) {
             // Handle error if needed
             if (artistError) {
