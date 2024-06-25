@@ -23,20 +23,27 @@ const EVENT_LISTENERS = [
 
 const TIME_RANGE_OPTIONS = {
     short_term: {
-      num: 1,
-      period: 'LAST MONTH',
+        num: 1,
+        period: 'LAST MONTH',
     },
     medium_term: {
-      num: 2,
-      period: 'LAST 6 MONTHS',
+        num: 2,
+        period: 'LAST 6 MONTHS',
     },
     long_term: {
-      num: 3,
-      period: 'ALL TIME',
+        num: 3,
+        period: 'ALL TIME',
     },
-  };
+};
 
 const SPOTIFY_ROOT_URL = "https://api.spotify.com/v1"
+
+const getPeriod = () => {
+    return (
+        document.querySelector('input[name="period-select"]:checked')?.value ??
+        'short_term'
+    );
+};
 
 // get and set vars needed for API call
 let params = getHashParams();
@@ -44,6 +51,7 @@ let access_token = params.access_token,
     client = params.client,
     error = params.error;
 
+// PRIMARY LOGIN DRIVER!!!
 // make a call to the user endpoint to get their name, ensure API functionality, and hide the login screen
 if (error) {
     alert("There was an error during the authentication");
@@ -58,6 +66,7 @@ if (error) {
                 displayName = response.display_name.toUpperCase();
                 $("#login").hide();
                 $("#loggedin").show();
+                processSitrep();    // IMPORTANT: load the default report on successful login!
             },
             error: function (xhr, status, error) {
                 console.error("Error making base Spotify API call:", error);
@@ -71,108 +80,14 @@ if (error) {
     }
 
     // Add event listeners to each selector that retrieves the appropriate data on click!!
-    // EVENT_LISTENERS.forEach((id) =>
-    //     document.getElementById(id).addEventListener('click', setupEventLIstener, false)
-    // );
-
-    // add event listeners on the time period buttons so they update data on click!
-    document.getElementById("short_term").addEventListener(
-        "click",
-        function () {
-            retrieveTracks("short_term", function (trackListContent, trackError) {
-                // Handle error if needed
-                if (trackError) {
-                    console.error("Error retrieving tracks:", trackError);
-                    return;
-                }
-
-                // Update the HTML content to display the template and tracks info!
-                userProfilePlaceholder.innerHTML = trackListContent
-
-                // After tracks are loaded, retrieve artists
-                retrieveArtists("short_term", function (artistListContent, artistError) {
-                    // Handle error if needed
-                    if (artistError) {
-                        console.error("Error retrieving artists:", artistError);
-                        return;
-                    }
-
-                    // Append or update the HTML content for artists
-                    $("#artistListContainer").html(artistListContent);
-                });
-                generateIncidentID();
-            });
-        },
-        false
-    );
-    document.getElementById("medium_term").addEventListener(
-        "click",
-        function () {
-            retrieveTracks("medium_term", function (trackListContent, trackError) {
-                // Handle error if needed
-                if (trackError) {
-                    console.error("Error retrieving tracks:", trackError);
-                    return;
-                }
-                // Update the HTML content to display the template and tracks info!
-                userProfilePlaceholder.innerHTML = trackListContent
-
-                // After tracks are loaded, retrieve artists
-                retrieveArtists("medium_term", function (artistListContent, artistError) {
-                    // Handle error if needed
-                    if (artistError) {
-                        console.error("Error retrieving artists:", artistError);
-                        return;
-                    }
-
-                    // Append or update the HTML content for artists
-                    $("#artistListContainer").html(artistListContent);
-                });
-                generateIncidentID();
-            });
-        },
-        false
-    );
-    document.getElementById("long_term").addEventListener(
-        "click",
-        function () {
-            retrieveTracks("long_term", function (trackListContent, trackError) {
-                // Handle error if needed
-                if (trackError) {
-                    console.error("Error retrieving tracks:", trackError);
-                    return;
-                }
-
-                // Update the HTML content to display the template and tracks info!
-                userProfilePlaceholder.innerHTML = trackListContent
-
-                // After tracks are loaded, retrieve artists
-                retrieveArtists("long_term", function (artistListContent, artistError) {
-                    // Handle error if needed
-                    if (artistError) {
-                        console.error("Error retrieving artists:", artistError);
-                        return;
-                    }
-
-                    // Append or update the HTML content for artists
-                    $("#artistListContainer").html(artistListContent);
-                });
-                generateIncidentID();
-            });
-        },
-        false
+    EVENT_LISTENERS.forEach((id) =>
+        document.getElementById(id).addEventListener('click', processSitrep, false)
     );
 }
 
 
 // FUNCTIONS
 // ---------------------------------------------------------------------------------------------
-// responsible for gathering selections from the web page and making 
-// the appropriate API calls to fetch items to display.
-function retrieveItems() {
-    const timeRangeSlug = getPeriod();
-    const limit = 10;
-}
 
 /**
 * Obtains parameters from the hash of the URL
@@ -189,10 +104,6 @@ function getHashParams() {
     return hashParams;
 }
 
-/**
- * Obtains parameters from the hash of the URL
- * @return Object
- */
 function retrieveTracks(timePeriod, callback) {
     $.ajax({
         url: `https://api.spotify.com/v1/me/top/tracks?limit=10&time_range=${timePeriod}`,
@@ -275,6 +186,35 @@ function retrieveArtists(timePeriod, callback) {
             // Call the callback with an error if needed
             callback(null, error);
         },
+    });
+}
+
+// Generates a sitrep and displays it to the user
+function processSitrep() {
+    const timeRange = getPeriod();
+
+    retrieveTracks(timeRange, function (trackListContent, trackError) {
+        // Handle error if needed
+        if (trackError) {
+            console.error("Error retrieving tracks:", trackError);
+            return;
+        }
+
+        // Update the HTML content to display the template and tracks info!
+        userProfilePlaceholder.innerHTML = trackListContent
+
+        // After tracks are loaded, retrieve artists
+        retrieveArtists(timeRange, function (artistListContent, artistError) {
+            // Handle error if needed
+            if (artistError) {
+                console.error("Error retrieving artists:", artistError);
+                return;
+            }
+
+            // Append or update the HTML content for artists
+            $("#artistListContainer").html(artistListContent);
+        });
+        generateIncidentID();
     });
 }
 
