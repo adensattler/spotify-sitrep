@@ -18,9 +18,25 @@ var dateOptions = {
 const EVENT_LISTENERS = [
     'short_term',
     'medium_term',
-    'long_term',
-    'ten-tracks'
+    'long_term'
 ];
+
+const TIME_RANGE_OPTIONS = {
+    short_term: {
+      num: 1,
+      period: 'LAST MONTH',
+    },
+    medium_term: {
+      num: 2,
+      period: 'LAST 6 MONTHS',
+    },
+    long_term: {
+      num: 3,
+      period: 'ALL TIME',
+    },
+  };
+
+const SPOTIFY_ROOT_URL = "https://api.spotify.com/v1"
 
 // get and set vars needed for API call
 let params = getHashParams();
@@ -54,11 +70,16 @@ if (error) {
         $("#loggedin").hide();
     }
 
+    // Add event listeners to each selector that retrieves the appropriate data on click!!
+    // EVENT_LISTENERS.forEach((id) =>
+    //     document.getElementById(id).addEventListener('click', setupEventLIstener, false)
+    // );
+
     // add event listeners on the time period buttons so they update data on click!
     document.getElementById("short_term").addEventListener(
         "click",
         function () {
-            retrieveTracks("short_term", 1, "LAST MONTH", function (trackListContent, trackError) {
+            retrieveTracks("short_term", function (trackListContent, trackError) {
                 // Handle error if needed
                 if (trackError) {
                     console.error("Error retrieving tracks:", trackError);
@@ -87,7 +108,7 @@ if (error) {
     document.getElementById("medium_term").addEventListener(
         "click",
         function () {
-            retrieveTracks("medium_term", 2, "LAST 6 MONTHS", function (trackListContent, trackError) {
+            retrieveTracks("medium_term", function (trackListContent, trackError) {
                 // Handle error if needed
                 if (trackError) {
                     console.error("Error retrieving tracks:", trackError);
@@ -107,6 +128,7 @@ if (error) {
                     // Append or update the HTML content for artists
                     $("#artistListContainer").html(artistListContent);
                 });
+                generateIncidentID();
             });
         },
         false
@@ -114,7 +136,7 @@ if (error) {
     document.getElementById("long_term").addEventListener(
         "click",
         function () {
-            retrieveTracks("long_term", 3, "ALL TIME", function (trackListContent, trackError) {
+            retrieveTracks("long_term", function (trackListContent, trackError) {
                 // Handle error if needed
                 if (trackError) {
                     console.error("Error retrieving tracks:", trackError);
@@ -135,6 +157,7 @@ if (error) {
                     // Append or update the HTML content for artists
                     $("#artistListContainer").html(artistListContent);
                 });
+                generateIncidentID();
             });
         },
         false
@@ -143,6 +166,14 @@ if (error) {
 
 
 // FUNCTIONS
+// ---------------------------------------------------------------------------------------------
+// responsible for gathering selections from the web page and making 
+// the appropriate API calls to fetch items to display.
+function retrieveItems() {
+    const timeRangeSlug = getPeriod();
+    const limit = 10;
+}
+
 /**
 * Obtains parameters from the hash of the URL
 * @return Object
@@ -162,7 +193,7 @@ function getHashParams() {
  * Obtains parameters from the hash of the URL
  * @return Object
  */
-function retrieveTracks(timePeriod, domNumber, domPeriod, callback) {
+function retrieveTracks(timePeriod, callback) {
     $.ajax({
         url: `https://api.spotify.com/v1/me/top/tracks?limit=10&time_range=${timePeriod}`,
         headers: {
@@ -197,9 +228,9 @@ function retrieveTracks(timePeriod, domNumber, domPeriod, callback) {
                 tracks: data.trackList,
                 total: data.total,
                 time: data.date,
-                num: domNumber,
+                num: TIME_RANGE_OPTIONS[timePeriod].num,
                 name: displayName,
-                period: domPeriod,
+                period: TIME_RANGE_OPTIONS[timePeriod].period,
             });
             // Call the callback with the extracted content
             callback(tracksListHTML);
@@ -228,15 +259,15 @@ function retrieveArtists(timePeriod, callback) {
                 data.artistList[i].id = (i + 1 < 10 ? "0" : "") + (i + 1); // Each artist holds its rank to display
             }
 
-            // Update the template with the values for the artists
+            // Create a new template with ONLY the values for the artists
             let artistListHTML = userProfileTemplate({
                 artists: data.artistList
             });
 
-            // Extract only the content of #artistListContainer from that new template
+            // Then extract the content of #artistListContainer from that new template (since it is the only data that will be populated)
             let artistContainerContent = $(artistListHTML).find("#artistListContainer").html();
 
-            // Call the callback with the extracted content
+            // Call the callback with the extracted content 
             callback(artistContainerContent);
         },
         error: function (xhr, status, error) {

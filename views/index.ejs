@@ -61,11 +61,22 @@
         <div id="loggedin">
             <h1>SITREP</h1>
             <h2>Spotify Situation Reporter</h2>
-            <div id="options">
+            <!-- <div id="options">
                 <button class="time-btn" id="short_term">Last Month</button>
                 <button class="time-btn" id="medium_term">Last 6 Months</button>
                 <button class="time-btn" id="long_term">All Time</button>
-            </div>
+            </div> -->
+
+            <form class="btn-group" role="group" aria-label="Time period selection" id="options">
+                <input type="radio" class="btn-check" name="period-select" id="short_term" autocomplete="off" checked value="short_term" />
+                <label class="btn btn-outline-secondary" for="short_term">Last Month</label>
+
+                <input type="radio" class="btn-check" name="period-select" id="medium_term" autocomplete="off" value="medium_term" />
+                <label class="btn btn-outline-secondary" for="medium_term">Last 6 Months</label>
+
+                <input type="radio" class="btn-check" name="period-select" id="long_term" autocomplete="off" value="long_term" />
+                <label class="btn btn-outline-secondary" for="long_term">All Time</label>
+            </form>
 
             <!-- SITUATION REPORT IS ADDED HERE -->
             <div id="sitrep"></div>
@@ -164,9 +175,9 @@
     <!-- ADD A FOOTER HERE -->
     <div class="footer">
         <div class="seperator">
-          <hr />
+            <hr />
         </div>
-        
+
         <div class="contact">
             <a href="mailto:adensattler@gmail.com">Email</a>
             <span>•</span>
@@ -176,10 +187,10 @@
         </div>
         <p class="info">
             Made by <a href="https://adensattler.me/">Aden Sattler</a>
-          </p>
+        </p>
 
 
-      </div>
+    </div>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
