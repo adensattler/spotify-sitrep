@@ -62,7 +62,7 @@
 
 
 .sitrepContainer {
-    background-image: url('wrinkled-paper-texture-7.jpg');
+    /* background-image: url('wrinkled-paper-texture-7.jpg'); */
     background-position: center;
     width: 340px;
     filter: brightness(105%);
@@ -87,6 +87,15 @@
     border: 1px
 }
 
+
+.goodbye {
+    text-align: center;
+    border-top: 1px dashed;
+}
+.spotify-logo {
+    /* margin-top: 20px; */
+    width: 120px !important;
+}
 
 
 /* Footer */

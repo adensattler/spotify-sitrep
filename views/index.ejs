@@ -68,13 +68,16 @@
             </div> -->
 
             <form class="btn-group" role="group" aria-label="Time period selection" id="options">
-                <input type="radio" class="btn-check" name="period-select" id="short_term" autocomplete="off" value="short_term" checked />
+                <input type="radio" class="btn-check" name="period-select" id="short_term" autocomplete="off"
+                    value="short_term" checked />
                 <label class="btn btn-outline-secondary" for="short_term">Last Month</label>
 
-                <input type="radio" class="btn-check" name="period-select" id="medium_term" autocomplete="off" value="medium_term" />
+                <input type="radio" class="btn-check" name="period-select" id="medium_term" autocomplete="off"
+                    value="medium_term" />
                 <label class="btn btn-outline-secondary" for="medium_term">Last 6 Months</label>
 
-                <input type="radio" class="btn-check" name="period-select" id="long_term" autocomplete="off" value="long_term" />
+                <input type="radio" class="btn-check" name="period-select" id="long_term" autocomplete="off"
+                    value="long_term" />
                 <label class="btn btn-outline-secondary" for="long_term">All Time</label>
             </form>
 
@@ -125,11 +128,8 @@
                             </td>
                             <td class='name'>
                                 {{this.name}}
-                                {{#each this.artists}}
-                                    <span>
-                                        {{this.name}}
-                                    </span>
-                                {{/each}}
+                                {{this.artists}}
+
                             </td>
                         </tr>
                     {{/each}}
@@ -164,10 +164,9 @@
 
             <!-- Add other blocks here -->
 
-            <div class='thanks'>
-                <p>
-                    THANK YOU FOR VISITING!
-                </p>
+            <div class='goodbye'>
+                <p>THANK YOU FOR VISITING!</p>
+                <img class='spotify-logo' id='spotify-logo' src='/images/Spotify_Full_Logo_RGB_Black.png'/>
             </div>
         </div>
     </script>

@@ -16,7 +16,7 @@ var redirect_uri = process.env.redirect_uri || 'http://localhost:3000/callback';
 app
     .set('view engine', 'ejs')  // Set the view engine to EJS
     .use(cors())
-    .use(express.static('static')); // Serve static files from the 'static' directory
+    .use(express.static(path.join(__dirname, '/static'))); // Serve static files from the 'static' directory
     
 
 /**

@@ -1,0 +1,141 @@
+{
+    "href": "https://api.spotify.com/v1/me/top/tracks?limit=10&locale=en-US,en;q%3D0.9,es;q%3D0.8",
+    "limit": 10,
+    "next": "https://api.spotify.com/v1/me/top/tracks?offset=10&limit=10&locale=en-US,en;q%3D0.9,es;q%3D0.8",
+    "offset": 0,
+    "previous": null,
+    "total": 2746,
+    "items": [
+      {
+        "album": {
+          "album_type": "EP",
+          "total_tracks": 6,
+          "available_markets": ["AR", "AU", "AT", "BE", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DK", "DO", "DE", "EC", "EE", "SV", "FI", "FR", "GR", "GT", "HN", "HK", "HU", "IS", "IE", "IT", "LV", "LT", "LU", "MY", "MT", "MX", "NL", "NZ", "NI", "NO", "PA", "PY", "PE", "PH", "PL", "PT", "SG", "SK", "ES", "SE", "CH", "TW", "TR", "UY", "US", "GB", "AD", "LI", "MC", "ID", "JP", "TH", "VN", "RO", "IL", "ZA", "SA", "AE", "BH", "QA", "OM", "KW", "EG", "MA", "DZ", "TN", "LB", "JO", "PS", "IN", "BY", "KZ", "MD", "UA", "AL", "BA", "HR", "ME", "MK", "RS", "SI", "KR", "BD", "PK", "LK", "GH", "KE", "NG", "TZ", "UG", "AG", "AM", "BS", "BB", "BZ", "BT", "BW", "BF", "CV", "CW", "DM", "FJ", "GM", "GE", "GD", "GW", "GY", "HT", "JM", "KI", "LS", "LR", "MW", "MV", "ML", "MH", "FM", "NA", "NR", "NE", "PW", "PG", "PR", "WS", "SM", "ST", "SN", "SC", "SL", "SB", "KN", "LC", "VC", "SR", "TL", "TO", "TT", "TV", "VU", "AZ", "BN", "BI", "KH", "CM", "TD", "KM", "GQ", "SZ", "GA", "GN", "KG", "LA", "MO", "MR", "MN", "NP", "RW", "TG", "UZ", "ZW", "BJ", "MG", "MU", "MZ", "AO", "CI", "DJ", "ZM", "CD", "CG", "IQ", "LY", "TJ", "VE", "ET", "XK"],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/5dGvCrryQg3iGYd8pIXUCZ"
+          },
+          "href": "https://api.spotify.com/v1/albums/5dGvCrryQg3iGYd8pIXUCZ",
+          "id": "5dGvCrryQg3iGYd8pIXUCZ",
+          "images": [
+            {
+              "url": "https://i.scdn.co/image/ab67616d0000b273cfd51990a0250f781adcd605",
+              "height": 640,
+              "width": 640
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d00001e02cfd51990a0250f781adcd605",
+              "height": 300,
+              "width": 300
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d00004851cfd51990a0250f781adcd605",
+              "height": 64,
+              "width": 64
+            }
+          ],
+          "name": "For Cameron",
+          "release_date": "2010-07-08",
+          "release_date_precision": "day",
+          "type": "album",
+          "uri": "spotify:album:5dGvCrryQg3iGYd8pIXUCZ",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/0OqkI7nRio2urzFPN5pIQS"
+              },
+              "href": "https://api.spotify.com/v1/artists/0OqkI7nRio2urzFPN5pIQS",
+              "id": "0OqkI7nRio2urzFPN5pIQS",
+              "name": "Merchant Ships",
+              "type": "artist",
+              "uri": "spotify:artist:0OqkI7nRio2urzFPN5pIQS"
+            }
+          ]
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/0OqkI7nRio2urzFPN5pIQS"
+            },
+            "href": "https://api.spotify.com/v1/artists/0OqkI7nRio2urzFPN5pIQS",
+            "id": "0OqkI7nRio2urzFPN5pIQS",
+            "name": "Merchant Ships",
+            "type": "artist",
+            "uri": "spotify:artist:0OqkI7nRio2urzFPN5pIQS"
+          }
+        ],
+        "available_markets": ["AR", "AU", "AT", "BE", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DK", "DO", "DE", "EC", "EE", "SV", "FI", "FR", "GR", "GT", "HN", "HK", "HU", "IS", "IE", "IT", "LV", "LT", "LU", "MY", "MT", "MX", "NL", "NZ", "NI", "NO", "PA", "PY", "PE", "PH", "PL", "PT", "SG", "SK", "ES", "SE", "CH", "TW", "TR", "UY", "US", "GB", "AD", "LI", "MC", "ID", "JP", "TH", "VN", "RO", "IL", "ZA", "SA", "AE", "BH", "QA", "OM", "KW", "EG", "MA", "DZ", "TN", "LB", "JO", "PS", "IN", "BY", "KZ", "MD", "UA", "AL", "BA", "HR", "ME", "MK", "RS", "SI", "KR", "BD", "PK", "LK", "GH", "KE", "NG", "TZ", "UG", "AG", "AM", "BS", "BB", "BZ", "BT", "BW", "BF", "CV", "CW", "DM", "FJ", "GM", "GE", "GD", "GW", "GY", "HT", "JM", "KI", "LS", "LR", "MW", "MV", "ML", "MH", "FM", "NA", "NR", "NE", "PW", "PG", "PR", "WS", "SM", "ST", "SN", "SC", "SL", "SB", "KN", "LC", "VC", "SR", "TL", "TO", "TT", "TV", "VU", "AZ", "BN", "BI", "KH", "CM", "TD", "KM", "GQ", "SZ", "GA", "GN", "KG", "LA", "MO", "MR", "MN", "NP", "RW", "TG", "UZ", "ZW", "BJ", "MG", "MU", "MZ", "AO", "CI", "DJ", "ZM", "CD", "CG", "IQ", "LY", "TJ", "VE", "ET", "XK"],
+        "disc_number": 1,
+        "duration_ms": 197275,
+        "explicit": false,
+        "external_ids": {
+          "isrc": "QZHN92236920"
+        },
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/4fnFayX7jwbv9L1RFzXWMO"
+        },
+        "href": "https://api.spotify.com/v1/tracks/4fnFayX7jwbv9L1RFzXWMO",
+        "id": "4fnFayX7jwbv9L1RFzXWMO",
+        "name": "Sleep Patterns",
+        "popularity": 54,
+        "preview_url": "https://p.scdn.co/mp3-preview/95d1ed7b116a0475220a433e091cd8df68e4149b?cid=cfe923b2d660439caf2b557b21f31221",
+        "track_number": 4,
+        "type": "track",
+        "uri": "spotify:track:4fnFayX7jwbv9L1RFzXWMO",
+        "is_local": false
+      },
+      {
+        "album": {
+          "album_type": "SINGLE",
+          "total_tracks": 1,
+          "available_markets": ["AR", "AU", "AT", "BE", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DK", "DO", "DE", "EC", "EE", "SV", "FI", "FR", "GR", "GT", "HN", "HK", "HU", "IS", "IE", "IT", "LV", "LT", "LU", "MY", "MT", "MX", "NL", "NZ", "NI", "NO", "PA", "PY", "PE", "PH", "PL", "PT", "SG", "SK", "ES", "SE", "CH", "TW", "TR", "UY", "US", "GB", "AD", "LI", "MC", "ID", "JP", "TH", "VN", "RO", "IL", "ZA", "SA", "AE", "BH", "QA", "OM", "KW", "EG", "MA", "DZ", "TN", "LB", "JO", "PS", "IN", "KZ", "MD", "UA", "AL", "BA", "HR", "ME", "MK", "RS", "SI", "KR", "BD", "PK", "LK", "GH", "KE", "NG", "TZ", "UG", "AG", "AM", "BS", "BB", "BZ", "BT", "BW", "BF", "CV", "CW", "DM", "FJ", "GM", "GE", "GD", "GW", "GY", "HT", "JM", "KI", "LS", "LR", "MW", "MV", "ML", "MH", "FM", "NA", "NR", "NE", "PW", "PG", "PR", "WS", "SM", "ST", "SN", "SC", "SL", "SB", "KN", "LC", "VC", "SR", "TL", "TO", "TT", "TV", "VU", "AZ", "BN", "BI", "KH", "CM", "TD", "KM", "GQ", "SZ", "GA", "GN", "KG", "LA", "MO", "MR", "MN", "NP", "RW", "TG", "UZ", "ZW", "BJ", "MG", "MU", "MZ", "AO", "CI", "DJ", "ZM", "CD", "CG", "IQ", "LY", "TJ", "VE", "ET", "XK"],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/1ueSCQNbsw3cZ0sV97Qrka"
+          },
+          "href": "https://api.spotify.com/v1/albums/1ueSCQNbsw3cZ0sV97Qrka",
+          "id": "1ueSCQNbsw3cZ0sV97Qrka",
+          "images": [
+            {
+              "url": "https://i.scdn.co/image/ab67616d0000b273e8b08837d76376724768558c",
+              "height": 640,
+              "width": 640
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d00001e02e8b08837d76376724768558c",
+              "height": 300,
+              "width": 300
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d00004851e8b08837d76376724768558c",
+              "height": 64,
+              "width": 64
+            }
+          ],
+          "name": "S.O.B.",
+          "release_date": "2024-02-09",
+          "release_date_precision": "day",
+          "type": "album",
+          "uri": "spotify:album:1ueSCQNbsw3cZ0sV97Qrka",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/08GfvCW09pv2QP4y9sle2a"
+              },
+              "href": "https://api.spotify.com/v1/artists/08GfvCW09pv2QP4y9sle2a",
+              "id": "08GfvCW09pv2QP4y9sle2a",
+              "name": "Sam Barber",
+              "type": "artist",
+              "uri": "spotify:artist:08GfvCW09pv2QP4y9sle2a"
+            }
+          ]
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/08GfvCW09pv2QP4y9sle2a"
+            },
+            "href": "https://api.spotify.com/v1/albums/1ueSCQNbsw3cZ0sV97Qrka"
+          }
+        ]
+    }
+]
+}

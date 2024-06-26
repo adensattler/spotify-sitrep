@@ -123,19 +123,27 @@ function retrieveTracks(timePeriod, callback) {
                 json: true,
             };
             for (var i = 0; i < data.trackList.length; i++) {
-                data.trackList[i].name = data.trackList[i].name.toUpperCase() + " - "; // Reformat the track name!
-                data.trackList[i].id = (i + 1 < 10 ? "0" : "") + (i + 1); // Each track holds its rank to display
-
-                // Update the formatting for all artists on a track!
+                // Reformat the track name
+                data.trackList[i].name = data.trackList[i].name.toUpperCase() + " - "; 
+            
+                // Each track holds its rank to display
+                data.trackList[i].id = (i + 1 < 10 ? "0" : "") + (i + 1); 
+            
+                // Correct the property name for external URLs
+                data.trackList[i].url = data.trackList[i].external_urls?.spotify;
+            
+                // Update the formatting for all artists on a track
+                let formattedArtists = "";
                 for (var j = 0; j < data.trackList[i].artists.length; j++) {
-                    data.trackList[i].artists[j].name =
-                        data.trackList[i].artists[j].name.trim().toUpperCase();
-
+                    let tmp = data.trackList[i].artists[j].name.trim().toUpperCase();
+                    
+                    // Add a comma if this is not the last artist
                     if (j != data.trackList[i].artists.length - 1) {
-                        data.trackList[i].artists[j].name =
-                            data.trackList[i].artists[j].name + ", ";
+                        tmp += ", ";
                     }
+                    formattedArtists += tmp;
                 }
+                data.trackList[i].artists = formattedArtists;
             }
 
             // userProfilePlaceholder.innerHTML = userProfileTemplate({
