@@ -126,9 +126,22 @@
                             <td class='begin'>
                                 {{this.id}}
                             </td>
+
+                            
                             <td class='name'>
+                                {{#if this.url}}
+                                <a
+                                style='color: black; word-break: break-word' href={{this.url}} target='_blank'>
+                                {{{this.name}}}
+                                {{{this.artists}}}
+                                </a>
+                                
+                                {{else}}
+
                                 {{this.name}}
                                 {{this.artists}}
+
+                                {{/if}}
 
                             </td>
                         </tr>

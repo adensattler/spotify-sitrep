@@ -123,14 +123,9 @@ function retrieveTracks(timePeriod, callback) {
                 json: true,
             };
             for (var i = 0; i < data.trackList.length; i++) {
-                // Reformat the track name
-                data.trackList[i].name = data.trackList[i].name.toUpperCase() + " - "; 
-            
-                // Each track holds its rank to display
-                data.trackList[i].id = (i + 1 < 10 ? "0" : "") + (i + 1); 
-            
-                // Correct the property name for external URLs
-                data.trackList[i].url = data.trackList[i].external_urls?.spotify;
+                data.trackList[i].name = data.trackList[i].name.toUpperCase() + " - ";  // Reformat the track name
+                data.trackList[i].id = (i + 1 < 10 ? "0" : "") + (i + 1);   // Each track holds its rank to display
+                data.trackList[i].url = data.trackList[i].external_urls?.spotify;   // Record the track url
             
                 // Update the formatting for all artists on a track
                 let formattedArtists = "";
