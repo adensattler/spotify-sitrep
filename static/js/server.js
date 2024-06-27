@@ -119,27 +119,18 @@ function retrieveTracks(timePeriod) {
             success: function (response) {
                 let responseItems = response.items
 
-                for (var i = 0; i < responseItems.length; i++) {
-                    responseItems[i].name = responseItems[i].name.toUpperCase() + " - ";  // Reformat the track name
-                    responseItems[i].id = (i + 1 < 10 ? "0" : "") + (i + 1);   // Each track holds its rank to display
-                    responseItems[i].url = responseItems[i].external_urls?.spotify;   // Record the track url
-
-                    // Update the formatting for all artists on a track
-                    let formattedArtists = "";
-                    for (var j = 0; j < responseItems[i].artists.length; j++) {
-                        let tmp = responseItems[i].artists[j].name.trim().toUpperCase();
-
-                        // Add a comma if this is not the last artist
-                        if (j != responseItems[i].artists.length - 1) {
-                            tmp += ", ";
-                        }
-                        formattedArtists += tmp;
+                let formattedTracks = responseItems.map((item, index) => {
+                    let formattedArtists = item.artists.map(artist => artist.name.trim().toUpperCase()).join(", ");
+                    return {
+                        name: item.name.toUpperCase() + " - ",
+                        id: (index + 1 < 10 ? "0" : "") + (index + 1),   // Each track holds its rank to display
+                        url: item.external_urls.spotify,
+                        artists: formattedArtists
                     }
-                    responseItems[i].artists = formattedArtists;
-                }
+                })
 
                 // Call the callback with the extracted content
-                resolve(responseItems);
+                resolve(formattedTracks);
 
             },
             error: function (xhr, status, error) {
