@@ -8,7 +8,7 @@ var userProfileSource = document.getElementById("user-profile-template").innerHT
     // This element will be used as a placeholder to insert the rendered template
     userProfilePlaceholder = document.getElementById("sitrep");
 
-var displayName = "SITREP";
+var displayName = "";   // variable placeholder for client username. will be updated upon login!
 
 var today = new Date(); // get today's data to display later!!
 var dateOptions = {
@@ -70,6 +70,7 @@ if (error) {
                 Authorization: "Bearer " + access_token,
             },
             success: function (response) {
+                displayName = response.display_name.toUpperCase();
                 $("#login").hide();
                 $("#loggedin").show();
                 processSitrep();    // IMPORTANT: load the default report on successful login!
