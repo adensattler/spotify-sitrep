@@ -117,9 +117,7 @@ function retrieveTracks(timePeriod) {
                 Authorization: "Bearer " + access_token,
             },
             success: function (response) {
-                let responseItems = response.items
-
-                let formattedTracks = responseItems.map((item, index) => {
+                let formattedTracks = response.items.map((item, index) => {
                     let formattedArtists = item.artists.map(artist => artist.name.trim().toUpperCase()).join(", ");
                     return {
                         name: item.name.toUpperCase() + " - ",
@@ -131,7 +129,6 @@ function retrieveTracks(timePeriod) {
 
                 // Call the callback with the extracted content
                 resolve(formattedTracks);
-
             },
             error: function (xhr, status, error) {
                 console.error("Error making tracks API call:", error);
@@ -149,16 +146,16 @@ function retrieveArtists(timePeriod) {
                 Authorization: "Bearer " + access_token,
             },
             success: function (response) {
-                let data = {
-                    artistList: response.items,
-                    json: true,
-                };
-                for (var i = 0; i < data.artistList.length; i++) {
-                    data.artistList[i].name = data.artistList[i].name.toUpperCase(); // Reformat the artist name!
-                    data.artistList[i].id = (i + 1 < 10 ? "0" : "") + (i + 1); // Each artist holds its rank to display
-                }
+                // Generate JSON of artist details by mapping over the items in the API response!
+                let formattedArtists = response.items.map((item, index) => {
+                    return {
+                        name: item.name.toUpperCase(),
+                        id: (index + 1 < 10 ? "0" : "") + (index + 1),
+                        url: item.external_urls.spotify,
+                    }
+                })
 
-                resolve(data.artistList);
+                resolve(formattedArtists);
             },
             error: function (xhr, status, error) {
                 console.error("Error making artists API call:", error);
