@@ -169,29 +169,23 @@ function retrieveArtists(timePeriod) {
 async function processSitrep() {
     const timeRange = getPeriod();      // determine what time range selection the user made
 
-    // Generate Sitrep Head Container 
-    try {
-        // Retrieve track data
-        const trackListContent = await retrieveTracks(timeRange);
+    // Retrieve track data
+    const trackListContent = await retrieveTracks(timeRange);
 
-        // Retrieve artist data
-        const artistListContent = await retrieveArtists(timeRange);
+    // Retrieve artist data
+    const artistListContent = await retrieveArtists(timeRange);
 
-        // Update the template with display it 
-        userProfilePlaceholder.innerHTML = userProfileTemplate({
-            tracks: trackListContent,
-            artists: artistListContent,
-            time: today.toLocaleDateString("en-US", dateOptions).toUpperCase(),
-            num: TIME_RANGE_OPTIONS[timeRange].num,
-            name: displayName,
-            period: TIME_RANGE_OPTIONS[timeRange].period,
-        });
+    // Update the template with display it 
+    userProfilePlaceholder.innerHTML = userProfileTemplate({
+        tracks: trackListContent,
+        artists: artistListContent,
+        time: today.toLocaleDateString("en-US", dateOptions).toUpperCase(),
+        num: TIME_RANGE_OPTIONS[timeRange].num,
+        name: displayName,
+        period: TIME_RANGE_OPTIONS[timeRange].period,
+    });
 
-        generateIncidentID();
-    } catch (error) {
-        console.error("Error processing sitrep:", error);
-    }
-
+    generateIncidentID();
 }
 
 function generateIncidentID() {
