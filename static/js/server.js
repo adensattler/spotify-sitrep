@@ -76,6 +76,10 @@ if (error) {
             },
             error: function (xhr, status, error) {
                 console.error("Error making base Spotify API call:", error);
+                $("#login").show();
+                $("#loggedin").hide();
+                // THIS HAPPENS WHEN THE PAGE TIMES OUT
+                // Maybe use the callback here to refresh token?
             },
         });
     }
@@ -181,11 +185,10 @@ async function processSitrep() {
         artists: artistListContent,
         time: today.toLocaleDateString("en-US", dateOptions).toUpperCase(),
         num: TIME_RANGE_OPTIONS[timeRange].num,
+        incident_num: generateIncidentID(),
         name: displayName,
         period: TIME_RANGE_OPTIONS[timeRange].period,
     });
-
-    generateIncidentID();
 }
 
 function generateIncidentID() {
@@ -195,9 +198,5 @@ function generateIncidentID() {
     }
 
     // Generate a random number with 8 digits
-    const randomIncidentNumber = generateRandomNumber(10000000, 99999999);
-
-    // Update the incident number in the HTML
-    const incidentNumberElement = document.getElementById('incident-number');
-    incidentNumberElement.textContent = randomIncidentNumber;
+    return generateRandomNumber(10000000, 99999999);
 };
