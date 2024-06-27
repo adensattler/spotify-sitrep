@@ -2,13 +2,13 @@
 // Get the inner HTML content of the element with ID 'user-profile-template'
 var userProfileSource = document.getElementById("user-profile-template").innerHTML,
     // Compile the HTML content into a Handlebars template function
-    userProfileTemplate = Handlebars.compile(userProfileSource),    
-    
+    userProfileTemplate = Handlebars.compile(userProfileSource),
+
     // Get the element with the ID 'sitrep' and store it in a variable
     // This element will be used as a placeholder to insert the rendered template
     userProfilePlaceholder = document.getElementById("sitrep");
 
- var displayName = "SITREP";
+var displayName = "SITREP";
 
 var today = new Date(); // get today's data to display later!!
 var dateOptions = {
@@ -109,121 +109,103 @@ function getHashParams() {
     return hashParams;
 }
 
-function retrieveTracks(timePeriod, callback) {
-    $.ajax({
-        url: `https://api.spotify.com/v1/me/top/tracks?limit=10&time_range=${timePeriod}`,
-        headers: {
-            Authorization: "Bearer " + access_token,
-        },
-        success: function (response) {
-            let data = {
-                trackList: response.items,
-                total: 0,
-                date: today.toLocaleDateString("en-US", dateOptions).toUpperCase(),
-                json: true,
-            };
-            for (var i = 0; i < data.trackList.length; i++) {
-                data.trackList[i].name = data.trackList[i].name.toUpperCase() + " - ";  // Reformat the track name
-                data.trackList[i].id = (i + 1 < 10 ? "0" : "") + (i + 1);   // Each track holds its rank to display
-                data.trackList[i].url = data.trackList[i].external_urls?.spotify;   // Record the track url
-            
-                // Update the formatting for all artists on a track
-                let formattedArtists = "";
-                for (var j = 0; j < data.trackList[i].artists.length; j++) {
-                    let tmp = data.trackList[i].artists[j].name.trim().toUpperCase();
-                    
-                    // Add a comma if this is not the last artist
-                    if (j != data.trackList[i].artists.length - 1) {
-                        tmp += ", ";
-                    }
-                    formattedArtists += tmp;
-                }
-                data.trackList[i].artists = formattedArtists;
-            }
+function retrieveTracks(timePeriod) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `https://api.spotify.com/v1/me/top/tracks?limit=10&time_range=${timePeriod}`,
+            headers: {
+                Authorization: "Bearer " + access_token,
+            },
+            success: function (response) {
+                let responseItems = response.items
 
-            // userProfilePlaceholder.innerHTML = userProfileTemplate({
-            // Update the template with the values for the tracks and misc
-            let tracksListHTML = userProfileTemplate({
-                tracks: data.trackList,
-                total: data.total,
-                time: data.date,
-                num: TIME_RANGE_OPTIONS[timePeriod].num,
-                name: displayName,
-                period: TIME_RANGE_OPTIONS[timePeriod].period,
-            });
-            // Call the callback with the extracted content
-            callback(tracksListHTML);
-        },
-        error: function (xhr, status, error) {
-            console.error("Error making tracks API call:", error);
-            // Call the callback with an error if needed
-            callback(null, error);
-        },
+                for (var i = 0; i < responseItems.length; i++) {
+                    responseItems[i].name = responseItems[i].name.toUpperCase() + " - ";  // Reformat the track name
+                    responseItems[i].id = (i + 1 < 10 ? "0" : "") + (i + 1);   // Each track holds its rank to display
+                    responseItems[i].url = responseItems[i].external_urls?.spotify;   // Record the track url
+
+                    // Update the formatting for all artists on a track
+                    let formattedArtists = "";
+                    for (var j = 0; j < responseItems[i].artists.length; j++) {
+                        let tmp = responseItems[i].artists[j].name.trim().toUpperCase();
+
+                        // Add a comma if this is not the last artist
+                        if (j != responseItems[i].artists.length - 1) {
+                            tmp += ", ";
+                        }
+                        formattedArtists += tmp;
+                    }
+                    responseItems[i].artists = formattedArtists;
+                }
+
+                // Call the callback with the extracted content
+                resolve(responseItems);
+
+            },
+            error: function (xhr, status, error) {
+                console.error("Error making tracks API call:", error);
+                reject(error);
+            },
+        });
     });
 }
 
-function retrieveArtists(timePeriod, callback) {
-    $.ajax({
-        url: `https://api.spotify.com/v1/me/top/artists?limit=10&time_range=${timePeriod}`,
-        headers: {
-            Authorization: "Bearer " + access_token,
-        },
-        success: function (response) {
-            let data = {
-                artistList: response.items,
-                json: true,
-            };
-            for (var i = 0; i < data.artistList.length; i++) {
-                data.artistList[i].name = data.artistList[i].name.toUpperCase(); // Reformat the artist name!
-                data.artistList[i].id = (i + 1 < 10 ? "0" : "") + (i + 1); // Each artist holds its rank to display
-            }
+function retrieveArtists(timePeriod) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `https://api.spotify.com/v1/me/top/artists?limit=10&time_range=${timePeriod}`,
+            headers: {
+                Authorization: "Bearer " + access_token,
+            },
+            success: function (response) {
+                let data = {
+                    artistList: response.items,
+                    json: true,
+                };
+                for (var i = 0; i < data.artistList.length; i++) {
+                    data.artistList[i].name = data.artistList[i].name.toUpperCase(); // Reformat the artist name!
+                    data.artistList[i].id = (i + 1 < 10 ? "0" : "") + (i + 1); // Each artist holds its rank to display
+                }
 
-            // Create a new template with ONLY the values for the artists
-            let artistListHTML = userProfileTemplate({
-                artists: data.artistList
-            });
-
-            // Then extract the content of #artistListContainer from that new template (since it is the only data that will be populated)
-            let artistContainerContent = $(artistListHTML).find("#artistListContainer").html();
-
-            // Call the callback with the extracted content 
-            callback(artistContainerContent);
-        },
-        error: function (xhr, status, error) {
-            console.error("Error making artists API call:", error);
-            // Call the callback with an error if needed
-            callback(null, error);
-        },
+                resolve(data.artistList);
+            },
+            error: function (xhr, status, error) {
+                console.error("Error making artists API call:", error);
+                reject(error);
+            },
+        });
     });
 }
 
 // Generates a sitrep and displays it to the user
-function processSitrep() {
+async function processSitrep() {
     const timeRange = getPeriod();      // determine what time range selection the user made
 
-    // RETRIEVE TRACK DATA for the appropriate time range
-    retrieveTracks(timeRange, function (trackListContent, trackError) {
-        // Handle error if needed
-        if (trackError) {
-            console.error("Error retrieving tracks:", trackError);
-            return;
-        }
-        // Update the HTML content to display the template and tracks info!
-        userProfilePlaceholder.innerHTML = trackListContent
+    // Generate Sitrep Head Container 
+    try {
+        // Retrieve track data
+        const trackListContent = await retrieveTracks(timeRange);
 
-        // After tracks are loaded, RETRIEVE ARTIST DATA
-        retrieveArtists(timeRange, function (artistListContent, artistError) {
-            // Handle error if needed
-            if (artistError) {
-                console.error("Error retrieving artists:", artistError);
-                return;
-            }
+        // Retrieve artist data
+        const artistListContent = await retrieveArtists(timeRange);
+        // Append or update the HTML content for artists
+        // $("#artistListContainer").html(artistListContent);
 
-            // Append or update the HTML content for artists
-            $("#artistListContainer").html(artistListContent);
+        userProfilePlaceholder.innerHTML = userProfileTemplate({
+            tracks: trackListContent,
+            artists: artistListContent,
+            total: 5,
+            time: today.toLocaleDateString("en-US", dateOptions).toUpperCase(),
+            num: TIME_RANGE_OPTIONS[timeRange].num,
+            name: displayName,
+            period: TIME_RANGE_OPTIONS[timeRange].period,
         });
+
         generateIncidentID();
-    });
+    } catch (error) {
+        console.error("Error processing sitrep:", error);
+    }
+
 }
 
 function generateIncidentID() {
