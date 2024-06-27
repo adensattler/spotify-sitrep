@@ -176,13 +176,11 @@ async function processSitrep() {
 
         // Retrieve artist data
         const artistListContent = await retrieveArtists(timeRange);
-        // Append or update the HTML content for artists
-        // $("#artistListContainer").html(artistListContent);
 
+        // Update the template with display it 
         userProfilePlaceholder.innerHTML = userProfileTemplate({
             tracks: trackListContent,
             artists: artistListContent,
-            total: 5,
             time: today.toLocaleDateString("en-US", dateOptions).toUpperCase(),
             num: TIME_RANGE_OPTIONS[timeRange].num,
             name: displayName,
