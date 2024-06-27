@@ -182,13 +182,13 @@ async function processSitrep() {
 
     // Update the template with display it 
     userProfilePlaceholder.innerHTML = userProfileTemplate({
+        num: TIME_RANGE_OPTIONS[timeRange].num,
+        name: displayName,
+        incident_num: generateIncidentID(),
+        time: today.toLocaleDateString("en-US", dateOptions).toUpperCase(),
+        period: TIME_RANGE_OPTIONS[timeRange].period,
         tracks: trackListContent,
         artists: artistListContent,
-        time: today.toLocaleDateString("en-US", dateOptions).toUpperCase(),
-        num: TIME_RANGE_OPTIONS[timeRange].num,
-        incident_num: generateIncidentID(),
-        name: displayName,
-        period: TIME_RANGE_OPTIONS[timeRange].period,
     });
 }
 
