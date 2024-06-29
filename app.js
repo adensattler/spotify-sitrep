@@ -17,7 +17,7 @@ app
     .set('view engine', 'ejs')  // Set the view engine to EJS
     .use(cors())
     .use(express.static('static')); // Serve static files from the 'static' directory
-    
+
 
 /**
  * Generates a random string containing numbers and letters
@@ -35,9 +35,9 @@ var generateRandomString = function (length) {
     return text;
 };
 
-
-app.listen(PORT, () => {
-    console.log(`Server is running at http://localhost:${PORT}`);
+// Run on env var port for production (8080) or 3000 for development
+app.listen(process.env.PORT || 3000, function () {
+    console.log('Server is running on http://localhost:3000');
 });
 
 app.get("/", (req, res) => {
@@ -97,7 +97,7 @@ app.get("/callback", function (req, res) {
 
         request.post(authOptions, function (error, response, body) {
             if (!error && response.statusCode === 200) {
-                var access_token = body.access_token, 
+                var access_token = body.access_token,
                     refresh_token = body.refresh_token;
 
                 // we can pass the token to the browser to make requests from there
