@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+
 /* :root for CSS Variables */
 :root {
     --primary-color: #333;
@@ -9,8 +12,13 @@
     --margin: 1rem;
     --border-radius: 5px;
     --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    --font-family: Arial, sans-serif;
+    --primary-font: 'Helvetica Neue', Helvetica, sans-serif, 'Ariel';
     --line-height: 1.6;
+}
+
+body {
+    font-family: var(--primary-font);
+    /* font-weight: 500; */
 }
 
 #login,
@@ -18,6 +26,50 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.login-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding-top: 40px; */
+    padding: 100px 10px;
+    /* margin-bottom: 300px; */
+}
+
+
+.login-btn {
+    margin: 2vh auto;
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #000000;
+    font-size: 20px;
+    border: none;
+    color: white;
+    font-family: 'Helvetica Neue', Helvetica, Geneva, Tahoma, sans-serif;
+    max-width: 295px;
+    width: 100%;
+}
+
+
+
+h1 {
+    font-family: Inter, 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding: 0px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+a:link {
+    text-decoration: none;
 }
 
 .date {
@@ -36,7 +88,7 @@
     width: 70%;
     text-align: center;
     padding: 5vh 0;
-  }
+}
 
 /* Media query for screens less than 1000px */
 @media (max-width: 1000px) {
@@ -129,6 +181,11 @@ td {
 
 
 /* Footer */
+.footer {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
 .contact {
     text-decoration: none;
     text-align: center;

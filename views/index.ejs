@@ -46,33 +46,41 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div id="login">
-            <h1>SITREP</h1>
-            <h2>Spotify Situation Reporter</h2>
-            <a href="/login" class="login-btn">Log in with Spotify</a>
-        </div>
+    <div class="page-container">
+        <div class="container">
+            <div id="login">
+                <div class="login-section">
+                    <h1>SITREP</h1>
+                    <h2>Spotify Situation Reporter</h2>
+                    <a href="/login" class="login-btn btn btn-outline-dark">Log in with Spotify</a>
+                </div>
+            </div>
 
-        <div id="loggedin">
-            <h1>SITREP</h1>
-            <h2>Spotify Situation Reporter</h2>
-            <!-- Time Range Selection Buttons -->
-            <form class="btn-group" role="group" aria-label="Time period selection" id="options">
-                <input type="radio" class="btn-check" name="period-select" id="short_term" autocomplete="off"
-                    value="short_term" checked />
-                <label class="btn btn-outline-secondary" for="short_term">Last Month</label>
+            <div id="loggedin">
+                <div class="main-content">
+                    <div class="options">
+                        <h1>SITREP</h1>
+                        <h2>Spotify Situation Reporter</h2>
+                        <!-- Time Range Selection Buttons -->
+                        <form class="btn-group" role="group" aria-label="Time period selection" id="options">
+                            <input type="radio" class="btn-check" name="period-select" id="short_term" autocomplete="off"
+                                value="short_term" checked />
+                            <label class="btn btn-outline-secondary" for="short_term">Last Month</label>
 
-                <input type="radio" class="btn-check" name="period-select" id="medium_term" autocomplete="off"
-                    value="medium_term" />
-                <label class="btn btn-outline-secondary" for="medium_term">Last 6 Months</label>
+                            <input type="radio" class="btn-check" name="period-select" id="medium_term" autocomplete="off"
+                                value="medium_term" />
+                            <label class="btn btn-outline-secondary" for="medium_term">Last 6 Months</label>
 
-                <input type="radio" class="btn-check" name="period-select" id="long_term" autocomplete="off"
-                    value="long_term" />
-                <label class="btn btn-outline-secondary" for="long_term">All Time</label>
-            </form>
-
-            <!-- SITUATION REPORT IS ADDED HERE -->
-            <div id="sitrep"></div>
+                            <input type="radio" class="btn-check" name="period-select" id="long_term" autocomplete="off"
+                                value="long_term" />
+                            <label class="btn btn-outline-secondary" for="long_term">All Time</label>
+                        </form>
+                    </div>
+                    
+                    <!-- SITUATION REPORT IS ADDED HERE -->
+                    <div id="sitrep"></div>
+                </div>
+            </div>
         </div>
     </div>
 
