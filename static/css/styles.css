@@ -72,6 +72,11 @@ a:link {
     text-decoration: none;
 }
 
+/* Main Content + SITREP */
+.main-content {
+    margin-top: 20px;
+}
+
 .date {
     margin: 0vh;
 }
@@ -87,7 +92,14 @@ a:link {
 .about {
     width: 70%;
     text-align: center;
-    padding: 5vh 0;
+    padding: 20px;
+}
+.about h1{
+    font-size: 2.5rem;
+}
+.about h3 {
+    margin-top: 20px;
+    margin-bottom: 2px;
 }
 
 /* Media query for screens less than 1000px */
@@ -182,8 +194,10 @@ td {
 
 /* Footer */
 .footer {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    /* background-color: #000000;
+    color: white; */
 }
 
 .contact {
