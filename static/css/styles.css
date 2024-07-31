@@ -95,6 +95,11 @@ a:link {
     text-align: center;
 }
 
+/* Privacy */
+.privacy {
+    min-height: calc(100vh - (var(--nav-height)) - 186px);
+}
+
 /* About */
 .about {
     width: 70%;
