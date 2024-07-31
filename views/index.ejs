@@ -181,6 +181,34 @@
                 </table>
             </div>
 
+            <div id="genreListContainer" class="contentContainer">
+                <h4 class='date'>
+                    TOP GENRES
+                </h4>
+                <table class='artists'>
+                    <thead>
+                        <td class='begin'>
+                            PCT
+                        </td>
+                        <td>
+                            GENRE
+                        </td>
+                    </thead>
+                    {{#each genres}}
+                        <tr>
+                            <td class='begin'>
+                                {{this.percentage}}
+                            </td>
+                            <td class='name'>
+                                
+                                {{this.genre}}
+
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+
             <!-- Add other blocks here -->
 
             <div class='goodbye'>

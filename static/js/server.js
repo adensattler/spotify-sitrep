@@ -170,6 +170,52 @@ function retrieveArtists(timePeriod) {
     });
 }
 
+function retrieveGenres(timePeriod){
+    return new Promise((resolve, reject) =>{
+        $.ajax({
+            url: `https://api.spotify.com/v1/me/top/artists?limit=49&time_range=${timePeriod}`,
+            headers: {
+                Authorization: "Bearer " + access_token,
+            },
+            success: function (response){
+                let genreDict = {};
+                let totalGenres = 0;
+                
+                // make a counter of all genres in the top 50 artists
+                response.items.forEach( (artist) => {
+                    artist.genres.forEach( (genre) => {
+                        if (!genreDict[genre]) {
+                            genreDict[genre] = 0;
+                        }
+                        genreDict[genre] += 1;
+                        totalGenres += 1;
+                    });
+                });
+                console.log(genreDict)
+
+                let formattedGenres = Object
+                    .entries(genreDict) // create Array of Arrays with [genre, count]
+                    .sort((a, b) => b[1] - a[1]) // sort by genre count, descending (b-a)
+                    .slice(0,10) // return only the first 10 elements of the intermediate result
+                    .map(([genre]) => {
+                        return {
+                            genre: genre,
+                            percentage: ((genreDict[genre] / response.items.length) *100).toFixed(2) + "%",
+                        }
+                    });
+
+
+                resolve(formattedGenres)
+            },
+            
+            error: function (xhr, status, error) {
+                console.error("Error making artists API call:", error);
+                reject(error);
+            },
+        });
+    });
+}
+
 // Generates a sitrep and displays it to the user
 async function processSitrep() {
     const timeRange = getPeriod();      // determine what time range selection the user made
@@ -180,6 +226,9 @@ async function processSitrep() {
     // Retrieve artist data
     const artistListContent = await retrieveArtists(timeRange);
 
+    // Retrieve genre data
+    const genreListContent = await retrieveGenres(timeRange);
+
     // Update the template with display it 
     userProfilePlaceholder.innerHTML = userProfileTemplate({
         num: TIME_RANGE_OPTIONS[timeRange].num,
@@ -189,6 +238,7 @@ async function processSitrep() {
         period: TIME_RANGE_OPTIONS[timeRange].period,
         tracks: trackListContent,
         artists: artistListContent,
+        genres: genreListContent,
     });
 }
 
