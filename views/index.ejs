@@ -17,7 +17,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md bg-body-tertiary">
+    <!-- <nav class="navbar navbar-expand-md bg-body-tertiary"> -->
+    <nav class="navbar navbar-expand-md navbar-custom">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -33,10 +34,7 @@
                         <a class="nav-link active" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Privacy Policy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Contact</a>
+                        <a class="nav-link active" href="privacy.html">Privacy</a>
                     </li>
                     <!-- <li class="nav-item" id="logout-btn">
                 <button class="nav-link active time-btn" id="logout">Log Out</button>
@@ -65,15 +63,15 @@
                         <form class="btn-group" role="group" aria-label="Time period selection" id="options">
                             <input type="radio" class="btn-check" name="period-select" id="short_term" autocomplete="off"
                                 value="short_term" checked />
-                            <label class="btn btn-outline-secondary" for="short_term">Last Month</label>
+                            <label class="btn btn-outline-dark" for="short_term">Last Month</label>
 
                             <input type="radio" class="btn-check" name="period-select" id="medium_term" autocomplete="off"
                                 value="medium_term" />
-                            <label class="btn btn-outline-secondary" for="medium_term">Last 6 Months</label>
+                            <label class="btn btn-outline-dark" for="medium_term">Last 6 Months</label>
 
                             <input type="radio" class="btn-check" name="period-select" id="long_term" autocomplete="off"
                                 value="long_term" />
-                            <label class="btn btn-outline-secondary" for="long_term">All Time</label>
+                            <label class="btn btn-outline-dark" for="long_term">All Time</label>
                         </form>
                     </div>
                     
@@ -192,12 +190,8 @@
         </div>
     </script>
 
-    <!-- ADD A FOOTER HERE -->
-    <div class="footer">
-        <div class="seperator">
-            <hr />
-        </div>
-
+    <!-- <div class="footer">
+        <hr>
         <div class="contact">
             <a href="mailto:adensattler@gmail.com">Email</a>
             <span>•</span>
@@ -208,8 +202,14 @@
         <p class="info">
             Made by <a href="https://adensattler.me/">Aden Sattler</a>
         </p>
-
-
+    </div> -->
+    <div class="footer2">
+        <div class="footer-links">
+            <a href="mailto:adensattler@gmail.com">Email</a>
+            <a href="https://github.com/adensattler">GitHub</a>
+            <a href="https://www.linkedin.com/in/aden-sattler">LinkedIn</a>
+            <p> Made by <a href="https://adensattler.me/">Aden Sattler</a></p>
+        </div>
     </div>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
