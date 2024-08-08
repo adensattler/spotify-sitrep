@@ -191,7 +191,6 @@ function retrieveGenres(timePeriod){
                         totalGenres += 1;
                     });
                 });
-                console.log(genreDict)
 
                 let formattedGenres = Object
                     .entries(genreDict) // create Array of Arrays with [genre, count]
