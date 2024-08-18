@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,9 +37,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="privacy.html">Privacy</a>
                     </li>
-                    <!-- <li class="nav-item" id="logout-btn">
-                <button class="nav-link active time-btn" id="logout">Log Out</button>
-              </li> -->
+                    <li class="nav-item" id="logout-btn">
+                        <a class="nav-link active" href="#" id="logout">Log Out</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -51,7 +52,7 @@
                     <h1>SITREP</h1>
                     <h2>Spotify Situation Reporter</h2>
                     <a href="/login" class="login-btn btn btn-outline-dark rounded-circle">Login</a>
-<!-- 
+                    <!-- 
                     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
                     <dotlottie-player src="https://lottie.host/24708ec9-6b25-4c99-a7d6-560ec197c688/SrEYbKVfxf.json" background="transparent" speed="1" style="width: 100%; " loop autoplay></dotlottie-player> -->
 
@@ -67,12 +68,12 @@
                         <h2>Spotify Situation Reporter</h2>
                         <!-- Time Range Selection Buttons -->
                         <form class="btn-group" role="group" aria-label="Time period selection" id="options">
-                            <input type="radio" class="btn-check" name="period-select" id="short_term" autocomplete="off"
-                                value="short_term" checked />
+                            <input type="radio" class="btn-check" name="period-select" id="short_term"
+                                autocomplete="off" value="short_term" checked />
                             <label class="btn btn-outline-dark" for="short_term">Last Month</label>
 
-                            <input type="radio" class="btn-check" name="period-select" id="medium_term" autocomplete="off"
-                                value="medium_term" />
+                            <input type="radio" class="btn-check" name="period-select" id="medium_term"
+                                autocomplete="off" value="medium_term" />
                             <label class="btn btn-outline-dark" for="medium_term">Last 6 Months</label>
 
                             <input type="radio" class="btn-check" name="period-select" id="long_term" autocomplete="off"
@@ -80,7 +81,7 @@
                             <label class="btn btn-outline-dark" for="long_term">All Time</label>
                         </form>
                     </div>
-                    
+
                     <!-- SITUATION REPORT IS ADDED HERE -->
                     <div id="sitrep"></div>
                 </div>

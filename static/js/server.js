@@ -41,6 +41,19 @@ const TIME_RANGE_OPTIONS = {
 
 const SPOTIFY_ROOT_URL = "https://api.spotify.com/v1"
 
+
+
+function logout() {
+    // Open a new tab with the Spotify homepage
+    window.open('https://www.spotify.com/logout', '_blank');
+    window.location.href = '/';
+};
+
+const logoutBtn = document.getElementById('logout');
+logoutBtn.addEventListener('click', logout);
+
+
+
 // Get the current selected period (time range)
 const getPeriod = () => {
     return (
@@ -73,12 +86,16 @@ if (error) {
                 displayName = response.display_name.toUpperCase();
                 $("#login").hide();
                 $("#loggedin").show();
+                $("#logout-btn").show();
+
                 processSitrep();    // IMPORTANT: load the default report on successful login!
             },
             error: function (xhr, status, error) {
                 console.error("Error making base Spotify API call:", error);
                 $("#login").show();
                 $("#loggedin").hide();
+                $("#logout-btn").hide();
+
                 // THIS HAPPENS WHEN THE PAGE TIMES OUT
                 // Maybe use the callback here to refresh token?
             },
@@ -88,6 +105,7 @@ if (error) {
         // render initial screen
         $("#login").show();
         $("#loggedin").hide();
+        $("#logout-btn").hide();
     }
 
     // Add event listeners to each selector that retrieves the appropriate data on click!!
