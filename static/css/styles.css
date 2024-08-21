@@ -23,7 +23,12 @@
 
 body {
     font-family: var(--primary-font);
-    /* font-weight: 500; */
+    /* font-weight: 600; */
+}
+
+.sitrepContainer {
+    font-family: 'Helvetica Neue';
+    font-weight: 500;
 }
 
 #login,
@@ -42,6 +47,13 @@ body {
     padding: 100px 0px;
     margin-bottom: 80px;
     max-width: 500px;
+}
+
+.login-section p {
+    font-size: large;
+    text-align: center;
+    font-family: DM Sans;
+    font-weight: 600;
 }
 
 /* old btn */
@@ -77,8 +89,6 @@ body {
 
 /* General Styles */
 h1 {
-    font-family: Inter, 'Helvetica Neue', sans-serif;
-    font-weight: 600;
     font-size: 3.5rem;
     text-align: center;
     margin-bottom: 0px;
@@ -91,12 +101,6 @@ h2 {
     text-align: center;
 }
 
-.login-section p {
-    font-family: DM Sans;
-    font-weight: 600;
-    font-size: large;
-    text-align: center;
-}
 
 a:link {
     text-decoration: none;
