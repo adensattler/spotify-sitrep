@@ -36,8 +36,9 @@ var generateRandomString = function (length) {
 };
 
 // Run on env var port for production (8080) or 3000 for development
-app.listen(process.env.PORT || 3000, function () {
-    console.log('Server is running on http://localhost:3000');
+const port = process.env.PORT || 8080;
+app.listen(port, function () {
+    console.log(`Server is running on http://localhost:${port}`);
 });
 
 app.get("/", (req, res) => {
