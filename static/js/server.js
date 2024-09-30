@@ -237,14 +237,12 @@ function retrieveGenres(timePeriod){
 async function processSitrep() {
     const timeRange = getPeriod();      // determine what time range selection the user made
 
-    // Retrieve track data
-    const trackListContent = await retrieveTracks(timeRange);
-
-    // Retrieve artist data
-    const artistListContent = await retrieveArtists(timeRange);
-
-    // Retrieve genre data
-    const genreListContent = await retrieveGenres(timeRange);
+    // Retrieve track, artist, and genre data concurrently
+    const [trackListContent, artistListContent, genreListContent] = await Promise.all([
+        retrieveTracks(timeRange),
+        retrieveArtists(timeRange),
+        retrieveGenres(timeRange),
+    ]);
 
     // Update the template with display it 
     userProfilePlaceholder.innerHTML = userProfileTemplate({
