@@ -3,14 +3,13 @@ const request = require('request');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3000;
 const querystring = require("querystring");
 
 // pulling in env vars
 require('dotenv').config();
 const client_id = process.env.client_id;// Your spotify dev client id
 const client_secret = process.env.client_secret; // Your dev secret
-var redirect_uri = process.env.redirect_uri || 'http://localhost:3000/callback'; // Your redirect uri
+const redirect_uri = process.env.redirect_uri || 'http://localhost:3000/callback'; // Your redirect uri
 
 
 app
