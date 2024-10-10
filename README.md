@@ -1,7 +1,7 @@
 # SITREP
 SITREP is a web application that gives users insights into their listening history (a situation report) to keep you updated in between your annual Spotify Wrapped.
 
-Live at [sitrep.adenaws.com](https://sitrep.adenaws.com/).
+Live at [sitrep.adenaws.com](https://sitrepmusic.web.app/).
 
 ## Getting Started
 SITREP is a Node.js app so you will need to have node and npm installed to run the app. You can follow a guide like [this](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to do so!
